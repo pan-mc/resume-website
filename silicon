@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mengchun Pan - Silicon Product Development Leader</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode/1.5.3/qrcode.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="circuit" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M10,2 L10,8 M2,10 L8,10 M12,10 L18,10 M10,12 L10,18" stroke="rgba(255,255,255,0.1)" stroke-width="0.5" fill="none"/></pattern></defs><rect width="100" height="100" fill="url(%23circuit)"/></svg>') repeat;
+            opacity: 0.3;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .chinese-name {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+        
+        .title {
+            font-size: 1.3rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .main-content {
+            padding: 40px 30px;
+        }
+        
+        .section {
+            margin-bottom: 35px;
+        }
+        
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 3px solid #3498db;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #e74c3c;
+        }
+        
+        .summary {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+        
+        .skill-item {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            transition: transform 0.3s ease;
+        }
+        
+        .skill-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .job {
+            margin-bottom: 30px;
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid #e74c3c;
+        }
+        
+        .job-header {
+            margin-bottom: 15px;
+        }
+        
+        .job-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .company {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #3498db;
+            margin-bottom: 5px;
+        }
+        
+        .duration {
+            color: #666;
+            font-style: italic;
+        }
+        
+        .achievements {
+            list-style: none;
+            margin-top: 15px;
+        }
+        
+        .achievements li {
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
+            line-height: 1.6;
+        }
+        
+        .achievements li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #3498db;
+            font-weight: bold;
+        }
+        
+        .education {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #9b59b6;
+        }
+        
+        .qr-section {
+            background: #2c3e50;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .qr-code {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            margin: 20px 0;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        
+        @media (max-width: 768px) {
+            .name { font-size: 2rem; }
+            .contact-info { flex-direction: column; gap: 10px; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .main-content { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <h1 class="name">Mengchun Pan</h1>
+                <div class="chinese-name">潘孟君</div>
+                <div class="title">Senior Silicon Product Development Leader</div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span>📧</span>
+                        <span>mengchun.pan@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>📱</span>
+                        <span>773-629-1549</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>💼</span>
+                        <span>linkedin.com/in/panm</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="section">
+                <h2 class="section-title">Professional Summary</h2>
+                <div class="summary">
+                    <span class="highlight">12+ years</span> of proven expertise in semiconductor product development across <span class="highlight">SoC/CPU/GPU/HPC/ASIC</span> lifecycles. Currently leading product yield analysis at Intel with deep specialization in <span class="highlight">advanced process nodes (14nm and below, TSMC N7+)</span> and cutting-edge packaging technologies including <span class="highlight">3D IC and multi-chip architectures</span>. Demonstrated success in <span class="highlight">30%+ yield improvements</span> and complex NPI execution across IDM and foundry ecosystems.
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">Core Technical Expertise</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <strong>Advanced Process Development:</strong> Intel 14nm and below, TSMC N7 and below, 3D IC, Multi-chip packaging
+                    </div>
+                    <div class="skill-item">
+                        <strong>Product Engineering:</strong> NPI, Yield Optimization, Wafer Sort, ATE, SLT, Risk Assessment
+                    </div>
+                    <div class="skill-item">
+                        <strong>Data Analytics & Tools:</strong> JMP, SQL, Python, Excel, Big Data Analysis (millions of units)
+                    </div>
+                    <div class="skill-item">
+                        <strong>Test Strategy:</strong> Wafer-to-Package-to-Test development, Test program architecture, Debug optimization
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">Professional Experience</h2>
+                
+                <div class="job">
+                    <div class="job-header">
+                        <div class="job-title">Product Development Engineering Manager - Product Yield Analysis</div>
+                        <div class="company">Intel Corporation</div>
+                        <div class="duration">January 2022 - Present | Hillsboro, OR</div>
+                    </div>
+                    <ul class="achievements">
+                        <li>Leading Intel's flagship CPU products (<strong>Arrow Lake, Panther Lake, Nova Lake</strong>) through critical bring-up and early development phases with full yield management ownership</li>
+                        <li>Delivered <strong>30%+ yield improvement</strong> for Intel's first 3D IC HPC product (Aurora Supercomputer) through comprehensive wafer, assembly, and test optimization</li>
+                        <li>Architected pre-Si risk assessment frameworks and cross-functional yield ownership models, implementing schedule-aligned mitigations using test chip and shuttle data</li>
+                        <li>Directed interdisciplinary teams across advanced packaging, test contents, yield, performance, and foundry/Intel process domains to resolve complex product yield challenges</li>
+                        <li>Delivered executive-level technical communications driving upstream design pivots and downstream validation alignment for HPC products</li>
+                    </ul>
+                </div>
+                
+                <div class="job">
+                    <div class="job-header">
+                        <div class="job-title">Technical Lead / Senior Staff Product Development Engineer</div>
+                        <div class="company">Intel Corporation</div>
+                        <div class="duration">December 2017 - December 2022 | Hillsboro, OR</div>
+                    </div>
+                    <ul class="achievements">
+                        <li>Architected scalable test program infrastructure and data structures for modular SoCs with advanced packaging in CPU and HPC products</li>
+                        <li>Optimized cost, DPM, and yield for high-volume CPU production while reducing debug iterations and test cycle time</li>
+                        <li>Pioneered high-temperature sort test capabilities for custom ASICs, identifying <strong>75% of post-assembly issues upstream</strong></li>
+                        <li>Conducted comprehensive cost-benefit analysis and validity assessments for failing test contents across wafer/unit/system levels</li>
+                    </ul>
+                </div>
+                
+                <div class="job">
+                    <div class="job-header">
+                        <div class="job-title">Staff Module Integration and Yield Engineer</div>
+                        <div class="company">Intel Corporation</div>
+                        <div class="duration">September 2012 - November 2017 | Hillsboro, OR</div>
+                    </div>
+                    <ul class="achievements">
+                        <li>Drove FEOL yield improvements for <strong>10nm and 14nm technologies</strong> through advanced data correlation between process signals and test outcomes</li>
+                        <li>Analyzed massive datasets (millions of units) to identify yield-modulating process parameters, optimizing wafer yield and transistor performance</li>
+                        <li>Established foundational big data analytics capabilities for process-test correlation across high-volume manufacturing</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">Education</h2>
+                <div class="education">
+                    <div><strong>Ph.D. in Materials Science and Engineering</strong></div>
+                    <div>Northwestern University, Evanston, IL (2007-2012)</div>
+                    <div>Minor in Industrial Engineering and Management Science</div>
+                    <br>
+                    <div><strong>B.S. in Materials Science and Engineering</strong></div>
+                    <div>National Tsing Hua University, Taiwan (2003-2007)</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="qr-section">
+            <h3>Connect with me at the Career Fair!</h3>
+            <div class="qr-code" id="qr-code-container"></div>
+            <p>Scan to view this resume and connect on LinkedIn</p>
+        </div>
+    </div>
+    
+    <script>
+        // Generate QR code with the current page URL
+        const qr = qrcode(0, 'M');
+        qr.addData(window.location.href);
+        qr.make();
+        document.getElementById('qr-code-container').innerHTML = qr.createImgTag(4);
+    </script>
+</body>
+</html>
